@@ -6,16 +6,25 @@ const slice = createSlice({
 	initialState: {
 		images: [],
 		isLoading: false,
+		error: null,
 	},
+	// Для локальної роботи екшени
 	reducers: {
 		clearData: state => {
 			state.images = []
 		},
 	},
+	// Для роботи з сервером
 	extraReducers: builder => {
-		builder.addCase(featchImgThunk.fulfilled, (state, { payload }) => {
-			state.images = [...state.images, ...payload.photos]
-		})
+		builder
+			.addCase(featchImgThunk.fulfilled, (state, { payload }) => {
+				state.images.push(...payload.photos)
+				// state.images = [...state.images, ...payload.photos] - однакові операції
+			})
+			.addCase(featchImgThunk.rejected, (state, { payload }) => {
+				state.error = payload
+				// state.images = [...state.images, ...payload.photos] - однакові операції
+			})
 	},
 })
 
