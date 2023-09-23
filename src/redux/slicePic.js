@@ -1,28 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { featchImgThunk, loadImageThunk } from './operations'
+import { featchImgThunk } from './operations'
 
 const slice = createSlice({
 	name: 'Pictures',
 	initialState: {
 		images: [],
 		isLoading: false,
-		page: 2,
 	},
 	reducers: {
-		setPages: (state, { payload }) => {
-			state.page = state.page + 1
+		clearData: state => {
+			state.images = []
 		},
 	},
 	extraReducers: builder => {
-		builder
-			.addCase(featchImgThunk.fulfilled, (state, { payload }) => {
-				state.images = payload.photos
-			})
-			.addCase(loadImageThunk.fulfilled, (state, { payload }) => {
-				state.images = [...state.images, ...payload.photos]
-			})
+		builder.addCase(featchImgThunk.fulfilled, (state, { payload }) => {
+			state.images = [...state.images, ...payload.photos]
+		})
 	},
 })
 
 export const imageReducer = slice.reducer
-export const { setPages } = slice.actions
+export const { clearData } = slice.actions
