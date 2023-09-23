@@ -1,8 +1,7 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectFavorite } from '../../redux/selectors'
-import { StyledGallary } from '../../App'
 import { deleteFromFav } from '../../redux/sliceFav'
+import { StyledGallary } from '../ImageGallary/ImageGallary.styles '
 
 export const Favorite = () => {
 	const imagesFavorite = useSelector(selectFavorite)
