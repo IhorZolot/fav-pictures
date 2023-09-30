@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectFavorite } from '../../redux/selectors'
 import { deleteFromFav } from '../../redux/sliceFav'
 import { StyledGallary } from '../ImageGallary/ImageGallary.styles '
+import { toast } from 'react-toastify'
 
 export const Favorite = () => {
 	const imagesFavorite = useSelector(selectFavorite)
@@ -9,7 +10,12 @@ export const Favorite = () => {
 
 	const imagesDeleteFavorite = id => {
 		dispatch(deleteFromFav({ id }))
-	}
+		toast.error('Removed from favorites!', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+    })
+  }
 
 	return (
 		<StyledGallary>

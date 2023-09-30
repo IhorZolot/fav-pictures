@@ -1,4 +1,8 @@
+import { NavLink } from 'react-router-dom'
 
 export const NavBar = () => {
-	return <div>NavBar</div>
+	return <nav>
+		<NavLink to='/'>Gallary</NavLink>
+		<NavLink to='/favorite'>Favorite</NavLink>
+	</nav>
 }

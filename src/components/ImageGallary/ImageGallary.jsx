@@ -6,6 +6,7 @@ import { addToFav } from '../../redux/sliceFav'
 import { clearData } from '../../redux/slicePic'
 import { featchImgThunk } from '../../redux/operations'
 import { SearchForm } from '../SearchForm/SearchForm'
+import { toast } from 'react-toastify'
 
 export const ImageGallary = () => {
 	const images = useSelector(selectImages)
@@ -34,7 +35,12 @@ export const ImageGallary = () => {
 
 	const addToFavorite = item => {
 		dispatch(addToFav(item))
-	}
+		toast.success('Added to favorites!', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+    })
+  }
 	return (
 		<>
 			<SearchForm setQueryStr={setQueryStr} />
