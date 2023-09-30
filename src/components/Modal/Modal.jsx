@@ -1,34 +1,39 @@
-import { useCallback, useEffect } from 'react'
+import React from 'react'
+import styled from 'styled-components'
 
-export const Modal = (children, onClose) => {
-  const onBackdropClick = e => {
-    if (e.target === e.carrentTarget){
-      onClose()
-    }
-  }
-  const handleKeyDown = useCallback(
-		e => {
-			if (e.key === 'Escape') {
-				onClose()
-			}
-		},
-		[onClose]
+export const Modal = ({children, onClose}) => {
+	return (
+		<BackgroundModal>
+			<Content>
+			<OptionMenu>
+			<h3>Title</h3>
+			<button onClick={onClose}>Close</button>
+			</OptionMenu>
+			{children }
+
+			</Content>
+		</BackgroundModal>
 	)
-  useEffect(() => {
-		const handleKeyDown = event => {
-			if (event.key === 'Escape') {
-				onClose()
-			}
-		}
-		document.addEventListener('keydown', handleKeyDown)
-		return () => {
-			document.removeEventListener('keydown', handleKeyDown)
-		}
-	}, [onClose, handleKeyDown])
-
-  return (
-    <div onClick={onBackdropClick} >
-      <div>{children}</div>
-    </div>
-  )
 }
+const BackgroundModal = styled.div`
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* top:0%;
+	left:0;
+	right: 0;
+	bottom: 0; */
+	//Inset Замінює всі 4 властивості
+	inset:0;
+	background: rgba(0,0,0,.4);
+`
+const Content = styled.div`
+	background: white;
+	width: 90vw;
+`
+const OptionMenu = styled.div`
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 25px;
+`
