@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom'
+import { NavBarStyled, LinkStyled } from './NavBar.styled.js'
 
 export const NavBar = () => {
-	return <nav>
-		<NavLink to='/'>Gallary</NavLink>
-		<NavLink to='/favorite'>Favorite</NavLink>
-	</nav>
+	return (
+		<NavBarStyled>
+			<LinkStyled to='/'>Gallary</LinkStyled>
+			<LinkStyled to='/favorite'>Favorite</LinkStyled>
+		</NavBarStyled>
+	)
 }
