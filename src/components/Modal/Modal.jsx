@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { BackgroundModal, Content, OptionMenu } from './Modal.styled'
+import styled from 'styled-components'
 
 export const Modal = ({ children, onClose }) => {
 	const onBackdropClick = event => {

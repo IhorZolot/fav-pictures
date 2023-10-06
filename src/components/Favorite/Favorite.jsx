@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { useContext } from 'react'
 import { MyContext } from '../../context/ContextProvider'
 import { FavoriteStyled } from './Favorite.styled'
+import { Button } from '../Button/Button'
 
 export const Favorite = () => {
 	const imagesFavorite = useSelector(selectFavorite)
@@ -25,9 +26,9 @@ export const Favorite = () => {
 			{imagesFavorite.map(image => (
 				<li key={image.id}>
 					<div>
-						<img src={image.src.landscape} alt={image.alt} onClick={() => openWithContent(image)} />
+						<img src={image.webformatURL} alt={image.tags} onClick={() => openWithContent(image)} />
 					</div>
-					<button onClick={() => imagesDeleteFavorite(image.id)}>Delete from fav</button>
+					<Button onClick={() => imagesDeleteFavorite(image.id)}>Delete from fav</Button>
 				</li>
 			))}
 		</FavoriteStyled>

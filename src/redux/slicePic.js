@@ -18,7 +18,7 @@ const slice = createSlice({
 	extraReducers: builder => {
 		builder
 			.addCase(featchImgThunk.fulfilled, (state, { payload }) => {
-				state.images.push(...payload.photos)
+				state.images.push(...payload.hits)
 				// state.images = [...state.images, ...payload.photos] - однакові операції
 			})
 			.addCase(featchImgThunk.rejected, (state, { payload }) => {

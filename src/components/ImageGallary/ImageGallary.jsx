@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import { MyContext } from '../../context/ContextProvider'
 import { ImageCounter } from '../ImageCounter/ImageCounter'
 import { StyledGallary } from './ImageGallary.styled'
+import { Button } from '../Button/Button'
 
 export const ImageGallary = () => {
 	const images = useSelector(selectImages)
@@ -19,7 +20,7 @@ export const ImageGallary = () => {
 	const { openWithContent } = useContext(MyContext)
 
 	useEffect(() => {
-		dispatch(featchImgThunk({ page, query, per_page: countToLoad }))
+		dispatch(featchImgThunk({ page, q: query, per_page: countToLoad }))
 	}, [dispatch, page, query, countToLoad])
 
 	useEffect(() => {
@@ -58,14 +59,14 @@ export const ImageGallary = () => {
 				{images.map(image => (
 					<li key={image.id}>
 						<div>
-							<img src={image.src.landscape} alt={image.alt} onClick={() => openWithContent(image)} />
+							<img src={image.webformatURL} alt={image.tags} onClick={() => openWithContent(image)} />
 						</div>
-						<button onClick={() => addToFavorite(image)}>Add to fav</button>
+						<Button onClick={() => addToFavorite(image)}>Add to fav</Button>
 					</li>
 				))}
 			</StyledGallary>
 
-			<button onClick={loadMoreImages}>Load more</button>
+			<Button onClick={loadMoreImages}>Load more</Button>
 		</>
 	)
 }

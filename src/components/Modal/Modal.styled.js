@@ -11,6 +11,7 @@ export const BackgroundModal = styled.div`
 	bottom: 0; */
 	//Inset Замінює всі 4 властивості
 	inset: 0;
+	z-index: 40;
 	background: rgba(0, 0, 0, 0.4);
 	backdrop-filter: blur(5px);
 `

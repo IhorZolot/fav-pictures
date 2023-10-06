@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const NavBarStyled = styled.nav`
 	position: sticky;
-	z-index: 1100;
+	/* z-index: 1100; */
 	display: flex;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0.1, 0.5);
 	gap: 25px;

@@ -1,12 +1,26 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export const ImageCard = ({ item }) => {
-	const { src, alt, photographer, photographerId, onClose } = item
+	const { largeImageURL, tags, user } = item
 	return (
-		<li>
-			<img src={src.landscape} alt={alt} />
-			<h3>{photographer}</h3>
-			<p>{alt}</p>
-		</li>
+		<>
+			<li>
+				<StyledImageWraper>
+					<img src={largeImageURL} alt={tags} />
+				</StyledImageWraper>
+				<h3>{user}</h3>
+				<p>{tags}</p>
+			</li>
+		</>
 	)
 }
+
+const StyledImageWraper = styled.div`
+	overflow: hidden;
+	height: 700px;
+	img {
+		width: 100%;
+		object-fit: cover;
+	}
+`

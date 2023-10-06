@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button } from '../Button/Button'
 
 export const SearchForm = ({ setQueryStr }) => {
 	const [value, setValue] = useState('')
@@ -11,7 +12,7 @@ export const SearchForm = ({ setQueryStr }) => {
 	return (
 		<form onSubmit={onSubmit}>
 			<input value={value} onChange={e => setValue(e.target.value)} />
-			<button>Find</button>
+			<Button>Find</Button>
 		</form>
 	)
 }
